@@ -1,0 +1,21 @@
+.input-design{
+    border-right: 0px !important;
+}
+
+input:focus{
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* .log-in-button-design{
+    background-color: #0DCAF0 !important;
+    font-weight: bolder !important;
+    padding-top: 0.4rem !important;
+    padding-bottom: 0.4rem;
+}
+.log-in-button-design:hover{
+    background-color: white !important;
+    color:#0DCAF0 !important;
+    border:1px solid #0DCAF0;
+
+} */

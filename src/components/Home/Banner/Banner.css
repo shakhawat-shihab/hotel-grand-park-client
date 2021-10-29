@@ -1,0 +1,23 @@
+.hght{
+    height: 400px;
+}
+.banner-pos{
+    height: 95vh;
+    min-height: 500px;
+    background-position: 50%;
+    background-size: 100% 100%;
+}
+
+
+@media screen and (max-width:600px) {
+    .banner-pos{
+        height: 100vh;
+        min-height: 400px;
+    }
+}
+@media screen and (max-width:400px) {
+    .banner-pos{
+        height: 100vh;
+        min-height: 450px;
+    }
+}

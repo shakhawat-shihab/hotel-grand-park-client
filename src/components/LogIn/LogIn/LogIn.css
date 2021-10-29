@@ -1,0 +1,13 @@
+.container-of-form{
+    width: 500px;
+}
+@media screen and (max-width:540px) {
+    .container-of-form{
+        width: 350px;
+    }  
+}
+@media screen and (max-width:370px) {
+    .container-of-form{
+        width: 95%;
+    }  
+}

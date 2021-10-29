@@ -1,0 +1,93 @@
+[
+    {
+        "id": "cat-1",
+        "type": "room",
+        "name": "PREMIUM ROOMS",
+        "description": "Our premium rooms are designed to give a taste of comfort and luxury during your stay in Hotel Grand Park. The rooms are well furnished and designed in a modern manner that increases guest satisfaction. They are well-equipped and furnished with king size bed, world class mattresses, pillows and duvets and have all the international standard room and bathroom amenities & facilities.",
+        "image": "https://i.ibb.co/zRv4pQq/premium.jpg",
+        "price": 6000,
+        "complementary": [
+            "Health Club",
+            "Daily Newspaper",
+            "Daily Mineral Water",
+            "Local Telephone Call",
+            "Wi-Fi Internet Access",
+            "Fruits Basket on Arrival",
+            "Breakfast at Restaurant",
+            "Laundry Service ",
+            "24 Hours Room Service "
+        ],
+        "offer": 15
+    },
+    {
+        "id": "cat-2",
+        "type": "room",
+        "name": "Deluxe Rooms",
+        "description": "Designed to ensure your comfort, all deluxe rooms are lively, spacious and decorated in a modern style. They are well-equipped and furnished with king size bed, world class mattresses, pillows and duvets and have all the international standard room and bathroom amenities & facilities.",
+        "image": "https://i.ibb.co/yspP73w/deluxjpg.jpg",
+        "price": 4000,
+        "complementary": [
+            "Health Club",
+            "Daily Newspaper",
+            "Daily Mineral Water",
+            "Local Telephone Call",
+            "Wi-Fi Internet Access",
+            "Fruits Basket on Arrival"
+        ]
+    },
+    {
+        "id": "cat-3",
+        "type": "room",
+        "name": "Superior Twin",
+        "description": "Luxury, personal touch and international standard amenities are the synonyms for our superior twin rooms. They are well furnished and equipped with two queen size beds. It is perfect for all range of guests including family, friends or business people.",
+        "image": "https://i.ibb.co/BwvxRSP/superior.jpg",
+        "price": 3000,
+        "complementary": [
+            "Health Club",
+            "Daily Newspaper",
+            "Daily Mineral Water",
+            "Local Telephone Call",
+            "Wi-Fi Internet Access",
+            "Fruits Basket on Arrival",
+            "Welcome Drinks on Arrival",
+            "24 Hours Room Service "
+        ],
+        "offer": 10
+    },
+    {
+        "id": "cat-4",
+        "type": "room",
+        "name": "Family Suites",
+        "description": "Family Suite is the combination of one Superior Twin and one Premium Double room linked by interconnected doors. Generally, four guests can be accommodated in connecting room, however, with two extra beds, one in each room, total of six guests can be accommodated.",
+        "image": "https://i.ibb.co/PcFy1WD/suites.jpg",
+        "price": 4500,
+        "complementary": [
+            "Health Club",
+            "Daily Newspaper",
+            "Daily Mineral Water",
+            "Local Telephone Call",
+            "Wi-Fi Internet Access",
+            "Fruits Basket on Arrival",
+            "Welcome Drinks on Arrival",
+            "24 Hours Room Service "
+        ]
+    },
+    {
+        "id": "cat-5",
+        "type": "transport",
+        "name": "Family Suites",
+        "description": "Family Suite is the combination of one Superior Twin and one Premium Double room linked by interconnected doors. Generally, four guests can be accommodated in connecting room, however, with two extra beds, one in each room, total of six guests can be accommodated.",
+        "image": "https://i.ibb.co/PcFy1WD/suites.jpg",
+        "price": 4500,
+        "complementary": [
+            "Health Club",
+            "Daily Newspaper",
+            "Daily Mineral Water",
+            "Local Telephone Call",
+            "Wi-Fi Internet Access",
+            "Fruits Basket on Arrival",
+            "Welcome Drinks on Arrival",
+            "24 Hours Room Service "
+        ]
+    }
+]
