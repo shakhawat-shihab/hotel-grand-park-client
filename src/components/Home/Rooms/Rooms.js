@@ -1,6 +1,4 @@
 import React from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
 import { Row, Spinner } from 'react-bootstrap';
 import useRoom from '../../../hooks/useRoom';
 import RoomCard from '../../RoomCard/RoomCard';

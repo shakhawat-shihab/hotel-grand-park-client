@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Nav, Navbar, NavDropdown, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import logo_name from '../../images/logo-name.png'
@@ -14,12 +14,19 @@ import { AiOutlineFileAdd } from "react-icons/ai";
 import { MdOutlineManageAccounts } from "react-icons/md";
 import { BsFillCartFill } from "react-icons/bs";
 import useCart from '../../hooks/useCart';
+import { getDataFromDb } from '../../dB';
 const NavigationBar = () => {
     const { user, logOut } = useAuth();
     const [pos, setPos] = useState(false);
     const [showUser, setShowUser] = useState(false);
     const [showManage, setShowManage] = useState(false);
-    const { cart } = useCart();
+    const [cartLength, setCartLength] = useState(0);
+    //pos changes with scroll, this is why add it as dependency 
+    useEffect(() => {
+        const data = getDataFromDb();
+        const keys = Object.keys(data);
+        setCartLength(keys.length);
+    }, [pos])
     function scrollOccured() {
         if (window.pageYOffset >= 10) {
             setPos(true);
@@ -86,8 +93,8 @@ const NavigationBar = () => {
                                     <Nav.Link as={NavLink} to='/my-order' activeClassName="selected"  >
                                         <div className="position-relative d-flex cursor-pointer">
                                             {
-                                                cart &&
-                                                <span className="bg-primary p-little rounded-circle fw-bold text-white position-absolute positioning">{cart.length}</span>
+
+                                                <span className="bg-primary p-little rounded-circle fw-bold text-white position-absolute positioning">{cartLength}</span>
                                             }
                                             <BsFillCartFill className='fs-3' />
                                         </div>

@@ -1,0 +1,16 @@
+#demo-td{
+    width: 200px;
+}
+
+@media screen and (max-width:767px) {
+    #demo-td{
+        width: 150px;
+    }
+    
+}
+
+@media screen and (max-width:500px) {
+    #demo-td{
+        width: 100px;
+    }
+}
