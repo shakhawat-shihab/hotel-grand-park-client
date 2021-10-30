@@ -8,37 +8,38 @@ import useRoom from '../../hooks/useRoom';
 import { AiFillHome } from "react-icons/ai";
 import useCart from '../../hooks/useCart';
 import { addToDbWithoutCount } from '../../dB';
+import useService from '../../hooks/UseService';
 
 const RoomDetails = () => {
-    const { roomId } = useParams();
+    const { serviceId } = useParams();
     const history = useHistory();
-    const { rooms } = useRoom();
+    const { services } = useService();
     const { cart } = useCart();
-    const [currentRoom, setCurrentRoom] = useState({});
+    const [currentService, setCurrentService] = useState({});
     console.log('cart ', cart);
     useEffect(() => {
-        setCurrentRoom(rooms.find(x => x.id === roomId));
-    }, [rooms]);
+        setCurrentService(services.find(x => x.id === serviceId));
+    }, [services]);
     function handleOrder() {
-        addToDbWithoutCount(roomId);
+        addToDbWithoutCount(serviceId);
         history.push('/my-order')
     }
     return (
         <div className='mt-5 pt-4'>
-            <div className='row m-0 justify-content-around g-0'>
+            <div className='row m-0 justify-content-around g-4'>
                 <div className='col-md-7 border-end '>
-                    <h2 className='border-bottom text-center fw-bold py-3'>{currentRoom?.name}</h2>
-                    <div className='px-3 pt-3'>
-                        <img src={currentRoom?.image} alt="" width='100%' />
+                    <h2 className='border-bottom text-center fw-bold py-3'>{currentService?.name}</h2>
+                    <div className='mx-3 mt-3 border rounded' style={{ minHeight: '100px' }}>
+                        <img src={currentService?.image} alt={" image of " + currentService?.name} width='100%' />
                     </div>
                     <div className='py-2 px-3'>
                         <h5 style={{ textAlign: 'justify' }}>
-                            {currentRoom?.description}
+                            {currentService?.description}
                         </h5>
                     </div>
                     <div className='py-2 px-3'>
                         <h5>
-                            Cost: {currentRoom?.price}
+                            Cost: {currentService?.price}
                         </h5>
                     </div>
                 </div>
@@ -46,8 +47,9 @@ const RoomDetails = () => {
                     <h2>Complimentary Services</h2>
                     <ul className='list-unstyled'>
                         {
-                            currentRoom?.complementary &&
-                            currentRoom.complementary.map(x => <li key={x} > <BsFillCheckCircleFill className='fs-2 text-success pe-3' />  {x} </li>)
+                            currentService?.complementary ?
+                                currentService.complementary.map(x => <li key={x} > <BsFillCheckCircleFill className='fs-2 text-success pe-3' />  {x} </li>) :
+                                <h5 className='text-secondary' > No complemenatry </h5>
                         }
                     </ul>
                     <div className='pt-3'>

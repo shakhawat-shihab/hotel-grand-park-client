@@ -10,6 +10,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import MyOrders from './components/MyOrders/MyOrders';
 import Shipping from './components/Shipping/Shipping';
 import AddService from './components/AddService/AddService';
+import Services from './components/Services/Services';
 
 function App() {
   return (
@@ -23,8 +24,11 @@ function App() {
           <Route exact path='/'>
             <Home></Home>
           </Route>
-          <Route path='/room/:roomId'>
+          <Route path='/service/:serviceId'>
             <RoomDetails></RoomDetails>
+          </Route>
+          <Route path='/services'>
+            <Services></Services>
           </Route>
           <PrivateRoute path='/my-order'>
             <MyOrders></MyOrders>

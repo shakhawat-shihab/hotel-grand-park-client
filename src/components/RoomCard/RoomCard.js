@@ -8,7 +8,7 @@ const RoomCard = (props) => {
     const history = useHistory();
     const { name, description, image, price, id } = props.data;
     function handleDetails() {
-        history.push(`/room/${id}`);
+        history.push(`/service/${id}`);
     }
     return (
         <Col>
