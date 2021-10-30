@@ -4,9 +4,12 @@ import useCart from '../../hooks/useCart';
 import SingleItem from '../SingleItem/SingleItem';
 import { BsFillCartCheckFill } from 'react-icons/bs';
 import { useHistory } from 'react-router';
+import useMyOrder from '../../hooks/useMyOrder';
 const MyOrders = () => {
     const history = useHistory();
     const [nav, setNav] = useState({ cartOrder: true, placedOrder: false });
+    const { myOrder, setMyOrder, isLoadingMyOrder } = useMyOrder();
+    console.log(myOrder);
     const { cart, setCart, isLoadingCart } = useCart();
     const [total, setTotal] = useState();
     // console.log(cart, isLoadingCart)
