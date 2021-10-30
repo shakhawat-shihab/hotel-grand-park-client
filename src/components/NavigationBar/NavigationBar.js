@@ -81,7 +81,7 @@ const NavigationBar = () => {
                                         onMouseEnter={() => { setShowManage(true) }}
                                         onMouseLeave={() => { setShowManage(false) }}
                                     >
-                                        <NavDropdown.Item as={NavLink} to='/manage-order' activeClassName="selected"  >
+                                        <NavDropdown.Item as={NavLink} to='/manage-orders' activeClassName="selected"  >
                                             <MdOutlineManageAccounts />
                                             <span className='ps-2'> Manage Orders </span>
                                         </NavDropdown.Item>

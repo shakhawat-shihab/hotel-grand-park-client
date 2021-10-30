@@ -5,14 +5,16 @@ import SingleItem from '../SingleItem/SingleItem';
 import { BsFillCartCheckFill } from 'react-icons/bs';
 import { useHistory } from 'react-router';
 import useMyOrder from '../../hooks/useMyOrder';
+import './MyOrders.css';
+import SingleOrder from '../SingleOrder/SingleOrder';
 const MyOrders = () => {
     const history = useHistory();
     const [nav, setNav] = useState({ cartOrder: true, placedOrder: false });
-    const { myOrder, setMyOrder, isLoadingMyOrder } = useMyOrder();
+    const { myOrder, isLoadingMyOrder } = useMyOrder();
     console.log(myOrder);
     const { cart, setCart, isLoadingCart } = useCart();
     const [total, setTotal] = useState();
-    // console.log(cart, isLoadingCart)
+    console.log(myOrder, isLoadingMyOrder)
     useEffect(() => {
         let sum = 0;
         for (const iterator of cart) {
@@ -58,7 +60,7 @@ const MyOrders = () => {
     return (
         <div className='mt-5 pt-4'>
             <h2 className='text-center fw-bold my-4'>My Orders</h2>
-            <Nav variant="pills" className="justify-content-center my-3 " onSelect={handleSelect}>
+            <Nav variant="pills" className="justify-content-center my-3 " onSelect={handleSelect} id='#myOrder'>
                 <Nav.Item>
                     <Nav.Link active={nav?.cartOrder} eventKey="1" >
                         My Cart
@@ -98,7 +100,7 @@ const MyOrders = () => {
                                             <h4 className='fw-bold text-primary' id='grand-total'>
                                                 {
                                                     total
-                                                }
+                                                }৳
                                             </h4>
                                         </div>
                                     </div>
@@ -111,7 +113,7 @@ const MyOrders = () => {
                                 </div>
                             </div>
                             :
-                            <div style={{ height: '70vh' }} className='d-flex align-items-center justify-content-center' >
+                            <div style={{ height: '50vh' }} className='d-flex align-items-center justify-content-center' >
                                 <h1 className='text-secondary'>
                                     Your cart is empty!!
                                 </h1>
@@ -121,11 +123,36 @@ const MyOrders = () => {
                             <Spinner animation='grow'></Spinner>
                         </div>
                     :
-                    <div className='mt-5 pt-5 text-center' style={{ height: '70vh' }}>
-                        <h1 className='text-secondary'>
-                            Coming Soon!!
-                        </h1>
-                    </div>
+                    isLoadingMyOrder === false
+                        ?
+                        myOrder.length
+                            ?
+                            <div className='row g-0 justify-content-center mb-5'>
+                                <div className='col-11 col-md-11 '>
+                                    <div className='row m-0 g-0 border-bottom border-top border-2 border-dark text-center'>
+                                        <div className='col-md-10 col-9 border-end border-2 border-dark py-2'>
+                                            <h4 className='fw-bold text-primary'>Description</h4>
+                                        </div>
+                                        <div className='col-md-2 col-3 py-2'>
+                                            <h4 className='fw-bold text-primary'>Status</h4>
+                                        </div>
+                                    </div>
+                                    {
+                                        myOrder.map(x => <SingleOrder key={x._id} data={x} ></SingleOrder>)
+                                    }
+                                </div>
+                            </div>
+                            :
+                            <div style={{ height: '50vh' }} className='d-flex align-items-center justify-content-center' >
+                                <h1 className='text-secondary'>
+                                    You have no placed order
+                                </h1>
+                            </div>
+                        :
+                        <div className='mt-5 pt-5 text-center' style={{ height: '100vh' }}>
+                            <Spinner animation='grow'></Spinner>
+                        </div>
+
             }
         </div>
     );

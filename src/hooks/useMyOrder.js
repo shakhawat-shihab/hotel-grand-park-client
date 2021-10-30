@@ -41,6 +41,7 @@ const useMyOrder = () => {
                     newArr.push(iterator);
                 }
                 setMyOrder(newArr);
+                setIsLoadingMyOrder(false);
             })
     }, [])
 

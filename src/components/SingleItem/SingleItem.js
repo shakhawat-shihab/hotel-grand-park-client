@@ -38,14 +38,14 @@ const SingleItem = (props) => {
                             <h4 className='m-0 col-md-6 col-12 text-center'>Number of rooms</h4>
                             <div className="input-group col-md-6 col-12 py-2" style={{ width: '112px' }}>
                                 <button className="btn btn-outline-secondary" type="button" onClick={decreaseCnt} >-</button>
-                                <input type="text" className="form-control fw-bold text-warning bg-white" aria-describedby="button-addon1" readOnly value={cnt} />
+                                <input type="text" className="form-control fw-bold text-warning bg-white text-align-center" aria-describedby="button-addon1" readOnly value={cnt} />
                                 <button className="btn btn-outline-secondary" type="button" onClick={increaseCnt} >+</button>
                             </div>
                         </div>
                     </div>
                     <div className='col-md-6 col-12 py-3'>
                         <h4 className='text-center'>
-                            Number of Days : 5
+                            Number of Days : 1
                         </h4>
                     </div>
 
