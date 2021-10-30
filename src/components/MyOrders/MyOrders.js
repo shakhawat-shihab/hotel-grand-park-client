@@ -60,18 +60,25 @@ const MyOrders = () => {
     return (
         <div className='mt-5 pt-4'>
             <h2 className='text-center fw-bold my-4'>My Orders</h2>
-            <Nav variant="pills" className="justify-content-center my-3 " onSelect={handleSelect} id='#myOrder'>
-                <Nav.Item>
-                    <Nav.Link active={nav?.cartOrder} eventKey="1" >
-                        My Cart
-                    </Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link active={nav?.placedOrder} eventKey="2" >
-                        Placed Orders
-                    </Nav.Link>
-                </Nav.Item>
-            </Nav>
+            {
+                (isLoadingCart === false && isLoadingMyOrder === false)
+                    ?
+                    <Nav variant="pills" className="justify-content-center my-3 " onSelect={handleSelect} id='#myOrder'>
+                        <Nav.Item>
+                            <Nav.Link active={nav?.cartOrder} eventKey="1" >
+                                My Cart
+                            </Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link active={nav?.placedOrder} eventKey="2" >
+                                Placed Orders
+                            </Nav.Link>
+                        </Nav.Item>
+                    </Nav>
+                    :
+                    <></>
+            }
+
             {
                 nav.cartOrder
                     ?
@@ -131,7 +138,7 @@ const MyOrders = () => {
                                 <div className='col-11 col-md-11 '>
                                     <div className='row m-0 g-0 border-bottom border-top border-2 border-dark text-center'>
                                         <div className='col-md-10 col-9 border-end border-2 border-dark py-2'>
-                                            <h4 className='fw-bold text-primary'>Description</h4>
+                                            <h4 className='fw-bold text-primary'>Orders</h4>
                                         </div>
                                         <div className='col-md-2 col-3 py-2'>
                                             <h4 className='fw-bold text-primary'>Status</h4>

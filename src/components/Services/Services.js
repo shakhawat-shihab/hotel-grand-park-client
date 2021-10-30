@@ -8,14 +8,14 @@ const Services = () => {
     // console.log(rooms, isLoadingRoom);
     if (isLoadingService) {
         return (
-            <div className='mt-5 pt-5 text-center'>
+            <div className='mt-5 pt-5 text-center' style={{ height: '80vh' }}>
                 <Spinner animation='grow'></Spinner>
             </div>
         );
     }
     else {
         return (
-            <div className='pt-4 mt-5'>
+            <div className='py-5 mt-5'>
                 <h1 className='text-center'>Our Services</h1>
                 <Row md={2} lg={4} sm={2} xs={1} className="g-3 m-0">
                     {services.map(x => <RoomCard data={x} key={x.id} ></RoomCard>)}

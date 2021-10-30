@@ -34,7 +34,7 @@ const SingleItem = (props) => {
                 <div className='row g-0 m-0 py-3 align-items-center justify-content-center py-3'>
                     <div className='col-md-6 col-12 '>
                         <div className='row g-0 m-0 align-items-center justify-content-center'>
-                            <h4 className='m-0 col-md-6 col-12 text-center'>Number of rooms</h4>
+                            <h4 className='m-0 col-md-6 col-12 text-center'>Number of rooms:</h4>
                             <div className="input-group col-md-6 col-12 py-2" style={{ width: '112px' }}>
                                 <button className="btn btn-outline-secondary" type="button" onClick={decreaseCnt} >-</button>
                                 <input type="text" className="form-control fw-bold text-warning bg-white text-center" aria-describedby="button-addon1" readOnly value={cnt} />

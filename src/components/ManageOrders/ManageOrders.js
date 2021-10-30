@@ -1,10 +1,34 @@
+import axios from 'axios';
 import React from 'react';
 import { Spinner } from 'react-bootstrap';
 import useAllOrder from '../../hooks/useAllOrders';
+import SingleOrderWithEvent from '../SingleOrderWithEvent/SingleOrderWithEvent';
 
 const ManageOrders = () => {
-    const { allOrder, isLoadingAllOrder } = useAllOrder();
+    const { allOrder, setAllOrder, isLoadingAllOrder } = useAllOrder();
     console.log(allOrder);
+
+    function handleApprove(id) {
+        console.log(id)
+    }
+    function handleDelete(id) {
+        console.log(id);
+        alert('Are you sure to Delete?')
+        const newArr = allOrder.filter(x => x._id !== id);
+        fetch(`https://hotel-grand-park.herokuapp.com/deleteOrder/${id}`, {
+            method: 'delete'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    const remainingUsers = allOrder.filter(x => x._id !== id);
+                    setAllOrder(remainingUsers)
+                }
+                setAllOrder(newArr);
+            })
+
+
+    }
     return (
         <div className='mt-5 pt-4'>
             <h3 className='text-center fw-bold my-4'>Manage Orders</h3>
@@ -21,9 +45,9 @@ const ManageOrders = () => {
                                     <h4 className='fw-bold text-primary'>Manage</h4>
                                 </div>
                             </div>
-                            {/* {
-                                cart.map(x => <SingleItem key={x.id} data={x} eventHandler={findInCart}></SingleItem>)
-                            } */}
+                            {
+                                allOrder.map(x => <SingleOrderWithEvent key={x._id} data={x} eventHandlerDelete={handleDelete} eventHandlerApprove={handleApprove} ></SingleOrderWithEvent>)
+                            }
                         </div>
                     </div>
                     :

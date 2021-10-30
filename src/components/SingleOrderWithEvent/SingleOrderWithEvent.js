@@ -1,5 +1,6 @@
+import { Button } from "react-bootstrap";
 
-const SingleOrder = (props) => {
+const SingleOrderWithEvent = (props) => {
     console.log(props.data)
     const { _id, name, email, status, address, division, transaction } = props.data;
     return (
@@ -33,12 +34,17 @@ const SingleOrder = (props) => {
                 }
             </div>
             <div className='col-md-2 col-3  d-flex align-items-center justify-content-center '>
-                <h4 className='text-center text-capitalize'>
-                    <span className={status === 'pending' ? 'text-warning' : 'text-success'}>{status}</span>
-                </h4>
+                <div className='text-center text-capitalize'>
+                    <span className={status === 'pending' ? 'text-warning fs-4' : 'text-success fs-4'}>{status}</span>
+
+                    <br />
+                    <Button variant='success my-2' onClick={() => { props.eventHandlerApprove(_id) }}>Approve </Button>
+                    <br />
+                    <Button variant='danger' onClick={() => { props.eventHandlerDelete(_id) }}> Delete </Button>
+                </div>
             </div>
         </div>
     );
 };
 
-export default SingleOrder;
+export default SingleOrderWithEvent;

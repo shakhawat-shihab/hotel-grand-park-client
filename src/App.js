@@ -12,6 +12,8 @@ import Shipping from './components/Shipping/Shipping';
 import AddService from './components/AddService/AddService';
 import Services from './components/Services/Services';
 import ManageOrders from './components/ManageOrders/ManageOrders';
+import Footer from './components/Footer/Footer';
+import NotFound from './components/NotFound/NotFound';
 
 function App() {
   return (
@@ -49,7 +51,11 @@ function App() {
           <Route path='/register'>
             <Register></Register>
           </Route>
+          <Route path='*'>
+            <NotFound></NotFound>
+          </Route>
         </Switch>
+        <Footer></Footer>
       </BrowserRouter>
     </AuthProvider>
   );
