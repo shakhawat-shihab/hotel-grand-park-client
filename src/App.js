@@ -8,6 +8,8 @@ import Register from './components/LogIn/Register/Register';
 import RoomDetails from './components/RoomDetials/RoomDetails';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import MyOrders from './components/MyOrders/MyOrders';
+import Shipping from './components/Shipping/Shipping';
+import AddService from './components/AddService/AddService';
 
 function App() {
   return (
@@ -26,6 +28,12 @@ function App() {
           </Route>
           <PrivateRoute path='/my-order'>
             <MyOrders></MyOrders>
+          </PrivateRoute>
+          <PrivateRoute path='/shipping'>
+            <Shipping></Shipping>
+          </PrivateRoute>
+          <PrivateRoute path='/add-service'>
+            <AddService></AddService>
           </PrivateRoute>
           <Route path='/login'>
             <LogIn></LogIn>
