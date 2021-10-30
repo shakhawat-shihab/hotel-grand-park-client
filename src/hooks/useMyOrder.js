@@ -10,7 +10,7 @@ const useMyOrder = () => {
     const [isLoadingMyOrder, setIsLoadingMyOrder] = useState(true);
     useEffect(() => {
         //find orders having users email address
-        fetch('http://localhost:5000/myOrder', {
+        fetch('https://hotel-grand-park.herokuapp.com/myOrder', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
