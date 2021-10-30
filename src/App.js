@@ -11,6 +11,7 @@ import MyOrders from './components/MyOrders/MyOrders';
 import Shipping from './components/Shipping/Shipping';
 import AddService from './components/AddService/AddService';
 import Services from './components/Services/Services';
+import ManageOrders from './components/ManageOrders/ManageOrders';
 
 function App() {
   return (
@@ -40,7 +41,7 @@ function App() {
             <AddService></AddService>
           </PrivateRoute>
           <PrivateRoute path='/manage-orders'>
-            <AddService></AddService>
+            <ManageOrders></ManageOrders>
           </PrivateRoute>
           <Route path='/login'>
             <LogIn></LogIn>

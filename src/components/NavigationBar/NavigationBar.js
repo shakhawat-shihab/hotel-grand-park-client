@@ -13,7 +13,6 @@ import loginLock from '../../images/log-in-lock.png';
 import { AiOutlineFileAdd } from "react-icons/ai";
 import { MdOutlineManageAccounts } from "react-icons/md";
 import { BsFillCartFill } from "react-icons/bs";
-import useCart from '../../hooks/useCart';
 import { getDataFromDb } from '../../dB';
 const NavigationBar = () => {
     const { user, logOut } = useAuth();

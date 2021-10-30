@@ -18,7 +18,6 @@ const SingleItem = (props) => {
     }
     return (
         <div className='row m-0 border-bottom border-2 border-dark g-0'>
-
             <div className='col-md-10 col-9 border-end border-2 border-dark  py-4'>
                 {/* details about order */}
                 <h3 className='fw-bold'> Service Name: {name}</h3>
@@ -38,7 +37,7 @@ const SingleItem = (props) => {
                             <h4 className='m-0 col-md-6 col-12 text-center'>Number of rooms</h4>
                             <div className="input-group col-md-6 col-12 py-2" style={{ width: '112px' }}>
                                 <button className="btn btn-outline-secondary" type="button" onClick={decreaseCnt} >-</button>
-                                <input type="text" className="form-control fw-bold text-warning bg-white text-align-center" aria-describedby="button-addon1" readOnly value={cnt} />
+                                <input type="text" className="form-control fw-bold text-warning bg-white text-center" aria-describedby="button-addon1" readOnly value={cnt} />
                                 <button className="btn btn-outline-secondary" type="button" onClick={increaseCnt} >+</button>
                             </div>
                         </div>
