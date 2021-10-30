@@ -9,10 +9,34 @@ const ManageOrders = () => {
     console.log(allOrder);
 
     function handleApprove(id) {
-        console.log(id)
+        // console.log(id);
+        alert('Are you sure to Approve?')
+        const newArr = allOrder.map(x => {
+            if (x._id === id) {
+                x.status = 'approve';
+            }
+            return x;
+        });
+        console.log(newArr);
+        fetch(`https://hotel-grand-park.herokuapp.com/updateOrder/${id}`, {
+            method: 'put',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ status: 'approve' })
+        })
+            .then(resp => resp.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    alert("Successfully updated!");
+                    setAllOrder(newArr);
+                    // history.push('/users');
+                }
+            });
     }
     function handleDelete(id) {
-        console.log(id);
+        //console.log(id);
         alert('Are you sure to Delete?')
         const newArr = allOrder.filter(x => x._id !== id);
         fetch(`https://hotel-grand-park.herokuapp.com/deleteOrder/${id}`, {
