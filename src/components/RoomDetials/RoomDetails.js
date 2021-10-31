@@ -36,14 +36,17 @@ const RoomDetails = () => {
                             <img src={currentService?.image} alt={" image of " + currentService?.name} width='100%' />
                         </div>
                         <div className='py-2 px-3'>
-                            <h5 style={{ textAlign: 'justify' }}>
+                            <p style={{ textAlign: 'justify' }}>
                                 {currentService?.description}
-                            </h5>
+                            </p>
                         </div>
                         <div className='py-2 px-3'>
-                            <h5>
+                            <h5 className='text-warning fw-bold'>
                                 Cost: {currentService?.price}
                             </h5>
+                            {
+                                currentService?.offer && <span className='text-danger fw-bold'>({currentService.offer} % off)</span>
+                            }
                         </div>
                     </div>
                     <div className='col-md-4 mt-4' >

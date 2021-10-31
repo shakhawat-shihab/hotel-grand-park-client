@@ -2,52 +2,83 @@ import React from 'react';
 import { Spinner } from 'react-bootstrap';
 import useAllOrder from '../../hooks/useAllOrders';
 import SingleOrderWithEvent from '../SingleOrderWithEvent/SingleOrderWithEvent';
-
+import swal from 'sweetalert';
 const ManageOrders = () => {
     const { allOrder, setAllOrder, isLoadingAllOrder } = useAllOrder();
     // console.log(allOrder);
     function handleApprove(id) {
         // console.log(id);
-        alert('Are you sure to Approve?')
-        const newArr = allOrder.map(x => {
-            if (x._id === id) {
-                x.status = 'approved';
-            }
-            return x;
-        });
-        // console.log(newArr);
-        fetch(`https://hotel-grand-park.herokuapp.com/updateOrder/${id}`, {
-            method: 'put',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({ status: 'approved' })
+        //alert('Are you sure to Approve?')
+        swal({
+            title: "Are you sure to Aprove?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
         })
-            .then(resp => resp.json())
-            .then(data => {
-                // console.log(data);
-                if (data.modifiedCount > 0) {
-                    setAllOrder(newArr);
-                    alert("Successfully updated!");
-                    // history.push('/users');
+            .then((x) => {
+                if (x) {
+                    const newArr = allOrder.map(x => {
+                        if (x._id === id) {
+                            x.status = 'approved';
+                        }
+                        return x;
+                    });
+                    // console.log(newArr);
+                    fetch(`https://hotel-grand-park.herokuapp.com/updateOrder/${id}`, {
+                        method: 'put',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify({ status: 'approved' })
+                    })
+                        .then(resp => resp.json())
+                        .then(data => {
+                            // console.log(data);
+                            if (data.modifiedCount > 0) {
+                                setAllOrder(newArr);
+                                //alert("Successfully updated!");
+                                swal({
+                                    title: "The Order is successfully Approved",
+                                    icon: "success",
+                                    button: "Ok",
+                                });
+                                // history.push('/users');
+                            }
+                        });
                 }
             });
     }
     function handleDelete(id) {
         //console.log(id);
-        alert('Are you sure to Delete?')
-        const newArr = allOrder.filter(x => x._id !== id);
-        fetch(`https://hotel-grand-park.herokuapp.com/deleteOrder/${id}`, {
-            method: 'delete'
+        //alert('Are you sure to Delete?')
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this order!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
         })
-            .then(res => res.json())
-            .then(data => {
-                if (data.deletedCount > 0) {
-                    const remainingUsers = allOrder.filter(x => x._id !== id);
-                    setAllOrder(remainingUsers)
+            .then((willDelete) => {
+                if (willDelete) {
+                    const newArr = allOrder.filter(x => x._id !== id);
+                    fetch(`https://hotel-grand-park.herokuapp.com/deleteOrder/${id}`, {
+                        method: 'delete'
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.deletedCount > 0) {
+                                const remainingUsers = allOrder.filter(x => x._id !== id);
+                                setAllOrder(remainingUsers);
+                                swal({
+                                    title: "Your Order is Deleted.",
+                                    icon: "success",
+                                    button: "Ok",
+                                });
+                            }
+                            setAllOrder(newArr);
+                        })
                 }
-                setAllOrder(newArr);
-            })
+            });
     }
     return (
         <div className='mt-5 pt-4'>

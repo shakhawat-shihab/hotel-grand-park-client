@@ -15,12 +15,17 @@ const Shipping = () => {
         if (keys.length) {
             data.product = product;
             data.status = 'pending';
-            console.log(data);
+            //console.log(data);
             // https://hotel-grand-park.herokuapp.com/placeOrder   https://hotel-grand-park.herokuapp.com/addService
             axios.post('https://hotel-grand-park.herokuapp.com/placeOrder', data)
                 .then(res => {
                     if (res.data.insertedId) {
-                        alert('Your Order is placed successfully. We will contact with you soon');
+                        //alert('Your Order is placed successfully. We will contact with you soon');
+                        swal({
+                            title: "Your Order is Placed. Check Cart => Placed Order",
+                            icon: "success",
+                            button: "Ok",
+                        });
                         clearTheDd();
                         reset();
                     }

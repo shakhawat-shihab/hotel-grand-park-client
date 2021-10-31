@@ -11,7 +11,7 @@ import foodPic from '../../../../images/food-pic.jpg';
 
 const ChooseUs = () => {
     const [imgVal, setImgVal] = useState(swimmPic);
-    console.log(imgVal);
+    //console.log(imgVal);
     return (
         <div className='my-5 pt-3'>
             <h2 className='text-center mt-3'>Why Choose Us</h2>
