@@ -12,7 +12,7 @@ const Review = () => {
     return (
         <div className='my-5 '>
             <h2 className='text-center mt-3 fw-bold'>Happy Client’s Feedback</h2>
-            <div>
+            <div className='mt-3'>
                 <Carousel activeIndex={index} onSelect={handleSelect} variant="dark">
                     <Carousel.Item interval={1200} >
                         <div className='row g-4 g-sm-3 m-0 px-4 justify-content-center align-items-center' >
