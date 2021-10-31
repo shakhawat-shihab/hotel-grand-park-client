@@ -7,7 +7,7 @@ import swal from 'sweetalert';
 import { useHistory } from 'react-router';
 const Shipping = () => {
     const history = useHistory();
-    const { register, handleSubmit, reset } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const product = getDataFromDb();
     const { user } = useAuth();
     const onSubmit = data => {
@@ -36,6 +36,12 @@ const Shipping = () => {
             history.push('/home')
         }
     };
+    const visibile = {
+        visibility: 'visible'
+    }
+    const invisibile = {
+        visibility: 'hidden'
+    }
     return (
         <div className='mt-4 pt-5'>
             {/* <h2>This is shipping</h2> */}
@@ -55,19 +61,21 @@ const Shipping = () => {
                                 {...register("email", { required: true })} />
                             <label htmlFor="floatingInput">Email address</label>
                         </div>
-                        <div className="form-floating mb-3">
+                        <div className="form-floating mb-2">
                             <input type="telephone" className="form-control" id="floatingPhone"
                                 placeholder="Enter Phone Number"
                                 {...register("phone", { required: true })} />
                             <label htmlFor="floatingPhone">Phone</label>
+                            <span style={errors.phone ? visibile : invisibile} className='text-danger ps-2' >* Enter a valid Contact number</span>
                         </div>
-                        <div className="form-floating mb-3">
+                        <div className="form-floating mb-2">
                             <input className="form-control" list="datalistOptions" id="detailsAddress"
                                 placeholder="Enter Your Address" type="text"
                                 {...register("address", { required: true })} />
                             <label htmlFor="detailsAddress">Area, Union, District</label>
+                            <span style={errors.address ? visibile : invisibile} className='text-danger ps-2' >* Enter your address</span>
                         </div>
-                        <div className="form-floating mb-3">
+                        <div className="form-floating mb-2">
                             <input className="form-control" list="datalistOptions" id="division"
                                 placeholder="Enter Your Division" type="text"
                                 {...register("division", { required: true })} />
@@ -82,6 +90,7 @@ const Shipping = () => {
                                 <option value="Rangpur" />
                                 <option value="Mymensingh" />
                             </datalist>
+                            <span style={errors.division ? visibile : invisibile} className='text-danger ps-2' >* Enter your division</span>
                         </div>
                         <fieldset>
                             <legend>Select Payment</legend>
@@ -114,14 +123,16 @@ const Shipping = () => {
                                     Others
                                 </label>
                             </p>
+                            <span style={errors.payment ? visibile : invisibile} className='text-danger ps-2' >* Chose a payment method</span>
                         </fieldset>
-                        <div className="form-floating mb-3">
+                        <div className="form-floating mb-2">
                             <input className="form-control" list="datalistOptions" id="transaction"
                                 placeholder="Enter Your transaction id" type="text"
                                 {...register("transaction", { required: true })} />
                             <label htmlFor="transaction">Transaction ID</label>
+                            <span style={errors.transaction ? visibile : invisibile} className='text-danger ps-2' >* Enter transaction id </span>
                         </div>
-                        <div className="form-floating mb-3">
+                        <div className="form-floating mb-2">
                             <div className="form-check">
                                 <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked"
                                     checked readOnly />
