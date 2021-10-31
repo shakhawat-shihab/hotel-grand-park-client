@@ -19,7 +19,7 @@ const useMyOrder = () => {
         })
             .then(resp => resp.json())
             .then(data => {
-                console.log('data ', data);
+                // console.log('data ', data);
                 let newArr = [];
                 for (const iterator of data) {
                     //get all the products detail from an order by product ids in the order

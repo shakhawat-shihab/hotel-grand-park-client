@@ -4,9 +4,9 @@ import { useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import { BsFillCartCheckFill, BsFillCheckCircleFill } from 'react-icons/bs';
 import { useHistory, useParams } from 'react-router';
-import useRoom from '../../hooks/useRoom';
+// import useRoom from '../../hooks/useRoom';
 import { AiFillHome } from "react-icons/ai";
-import useCart from '../../hooks/useCart';
+// import useCart from '../../hooks/useCart';
 import { addToDbWithoutCount } from '../../dB';
 import useService from '../../hooks/UseService';
 
@@ -14,9 +14,9 @@ const RoomDetails = () => {
     const { serviceId } = useParams();
     const history = useHistory();
     const { services } = useService();
-    const { cart } = useCart();
+    // const { cart } = useCart();
     const [currentService, setCurrentService] = useState({});
-    console.log('cart ', cart);
+    // console.log('cart ', cart);
     useEffect(() => {
         setCurrentService(services.find(x => x.id === serviceId));
     }, [services]);

@@ -7,14 +7,15 @@ import { useHistory } from 'react-router';
 import useMyOrder from '../../hooks/useMyOrder';
 import './MyOrders.css';
 import SingleOrder from '../SingleOrder/SingleOrder';
+import { removeFromDb } from '../../dB';
 const MyOrders = () => {
     const history = useHistory();
     const [nav, setNav] = useState({ cartOrder: true, placedOrder: false });
     const { myOrder, setMyOrder, isLoadingMyOrder } = useMyOrder();
-    console.log(myOrder);
+    // console.log(myOrder);
     const { cart, setCart, isLoadingCart } = useCart();
     const [total, setTotal] = useState();
-    console.log(myOrder, isLoadingMyOrder)
+    // console.log(myOrder, isLoadingMyOrder)
     useEffect(() => {
         let sum = 0;
         for (const iterator of cart) {
@@ -33,7 +34,7 @@ const MyOrders = () => {
         let index = 0;
         let newArr;
         for (const elem of cart) {
-            console.log(elem);
+            //console.log(elem);
             if (elem.id === id) {
                 break;
             }
@@ -41,7 +42,7 @@ const MyOrders = () => {
         }
         cart[index].count = num;
         newArr = [...cart];
-        console.log(newArr);
+        // console.log(newArr);
         setCart(newArr);
     }
     //for the navigation
@@ -59,19 +60,27 @@ const MyOrders = () => {
     }
     function handleDelete(id) {
         console.log(id);
-        // alert('Are you sure to Delete?')
-        // const newArr = myOrder.filter(x => x._id !== id);
-        // fetch(`https://hotel-grand-park.herokuapp.com/deleteOrder/${id}`, {
-        //     method: 'delete'
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         if (data.deletedCount > 0) {
-        //             const remainingUsers = myOrder.filter(x => x._id !== id);
-        //             setMyOrder(remainingUsers)
-        //         }
-        //         setMyOrder(newArr);
-        //     })
+        alert('Are you sure to Delete?')
+        const newArr = myOrder.filter(x => x._id !== id);
+        fetch(`https://hotel-grand-park.herokuapp.com/deleteOrder/${id}`, {
+            method: 'delete'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    const remainingUsers = myOrder.filter(x => x._id !== id);
+                    setMyOrder(remainingUsers)
+                }
+                setMyOrder(newArr);
+            })
+    }
+
+    function handleDeleteFromCart(id) {
+        console.log(id);
+        const newArr = cart.filter(x => x.id !== id);
+        console.log(newArr);
+        setCart(newArr);
+        removeFromDb(id);
     }
     return (
         <div className='mt-5 pt-4'>
@@ -113,7 +122,9 @@ const MyOrders = () => {
                                         </div>
                                     </div>
                                     {
-                                        cart.map(x => <SingleItem key={x.id} data={x} eventHandler={findInCart}></SingleItem>)
+                                        cart.map(x => <SingleItem key={x.id} data={x} eventHandler={findInCart}
+                                            eventHandlerDeleteFromCart={handleDeleteFromCart}
+                                        ></SingleItem>)
                                     }
                                     <div className='row m-0 border-bottom border-2 border-dark text-center'>
                                         <div className='col-9 col-md-10 border-end border-2 border-dark py-2 d-flex justify-content-end'>

@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React from 'react';
 import { Spinner } from 'react-bootstrap';
 import useAllOrder from '../../hooks/useAllOrders';
@@ -13,7 +12,7 @@ const ManageOrders = () => {
         alert('Are you sure to Approve?')
         const newArr = allOrder.map(x => {
             if (x._id === id) {
-                x.status = 'approve';
+                x.status = 'approved';
             }
             return x;
         });
@@ -57,21 +56,29 @@ const ManageOrders = () => {
             {
                 isLoadingAllOrder === false
                     ?
-                    <div className='row g-0 justify-content-center mb-5'>
-                        <div className='col-12 px-2 px-md-0 col-md-11 '>
-                            <div className='row m-0 g-0 border-bottom border-top border-2 border-dark text-center'>
-                                <div className='col-md-10 col-8 border-end border-2 border-dark py-2'>
-                                    <h4 className='fw-bold text-primary'>Orders</h4>
+                    allOrder.length
+                        ?
+                        <div className='row g-0 justify-content-center mb-5'>
+                            <div className='col-12 px-2 px-md-0 col-md-11 '>
+                                <div className='row m-0 g-0 border-bottom border-top border-2 border-dark text-center'>
+                                    <div className='col-md-10 col-8 border-end border-2 border-dark py-2'>
+                                        <h4 className='fw-bold text-primary'>Orders</h4>
+                                    </div>
+                                    <div className='col-md-2 col-4 py-2'>
+                                        <h4 className='fw-bold text-primary'>Manage</h4>
+                                    </div>
                                 </div>
-                                <div className='col-md-2 col-4 py-2'>
-                                    <h4 className='fw-bold text-primary'>Manage</h4>
-                                </div>
+                                {
+                                    allOrder.map(x => <SingleOrderWithEvent key={x._id} data={x} eventHandlerDelete={handleDelete} eventHandlerApprove={handleApprove} ></SingleOrderWithEvent>)
+                                }
                             </div>
-                            {
-                                allOrder.map(x => <SingleOrderWithEvent key={x._id} data={x} eventHandlerDelete={handleDelete} eventHandlerApprove={handleApprove} ></SingleOrderWithEvent>)
-                            }
                         </div>
-                    </div>
+                        :
+                        <div style={{ height: '75vh' }} className='d-flex align-items-center justify-content-center' >
+                            <h1 className='text-secondary'>
+                                No Order from any Customer!!
+                            </h1>
+                        </div>
                     :
                     <div className='mt-5 pt-5 text-center' style={{ height: '100vh' }}>
                         <Spinner animation='grow'></Spinner>

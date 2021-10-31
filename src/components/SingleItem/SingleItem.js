@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button } from 'react-bootstrap';
 import { addToDb } from '../../dB';
 import './SingleItem.css';
 const SingleItem = (props) => {
@@ -120,6 +121,9 @@ const SingleItem = (props) => {
                         </tbody>
                         <tfoot></tfoot>
                     </table>
+                </div>
+                <div className='d-flex pt-4 pb-2 justify-content-center'>
+                    <Button variant='danger' onClick={() => props.eventHandlerDeleteFromCart(id)}> Delete This Item</Button>
                 </div>
             </div>
             <div className='col-md-2 col-3  d-flex align-items-center justify-content-center text-warning '>

@@ -1,7 +1,7 @@
 import { Button } from "react-bootstrap";
 
 const SingleOrder = (props) => {
-    console.log(props.data)
+    // console.log(props.data)
     const { _id, name, email, status, address, division, transaction } = props.data;
     return (
 
@@ -37,7 +37,7 @@ const SingleOrder = (props) => {
                 <div className='text-center text-capitalize'>
                     <span className={status === 'pending' ? 'text-warning' : 'text-success'}>{status}</span>
                     <br />
-                    <Button variant='danger' onClick={() => { props.eventHandlerDelete(_id) }}> Delete </Button>
+                    <Button variant='danger' className='my-2' onClick={() => { props.eventHandlerDelete(_id) }}> Delete </Button>
                 </div>
             </div>
         </div>
