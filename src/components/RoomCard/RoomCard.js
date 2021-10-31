@@ -22,24 +22,22 @@ const RoomCard = (props) => {
                         {description && description.length >= 250 ? description?.substring(0, 180).concat(' ...') : description}
                     </Card.Text>
                 </Card.Body>
-                <div className='ps-2'>
-                    <h4 className='text-warning fw-bold ps-2'>
-                        {/* {service.includes('Indoor and Outdoor Sports') &&
-                            < span style={{ textDecoration: 'line-through', textDecorationStyle: 'double' }}
-                                className='pe-1'
-                            > 50 </span>} */}
-                        {price} ৳
-                    </h4>
-                </div>
-                <div className='px-2 d-flex align-items-center'>
+                <div className=' px-3 d-flex justify-content-between align-items-center '>
+                    <div className='d-flex flex-column'>
+                        <h4 className='text-warning fw-bold m-0'>
+                            {price} ৳
+                        </h4>
+                        <br />
+                        {
+                            props.data?.offer && <span className='text-danger fw-bold'>({props.data.offer} % off)</span>
+                        }
+
+                    </div>
+
                     <Button variant='primary' onClick={handleDetails} >
                         Show Details
                         <BsFillInfoCircleFill className='ps-2 fs-4' />
                     </Button>
-                    {/* <Button variant='primary' onClick={handleOrder} className='ms-2' >
-                        Book
-                        <BsFillCartCheckFill className='ps-2 fs-4' />
-                    </Button> */}
                 </div>
             </Card >
         </Col >

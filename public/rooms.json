@@ -1,8 +1,8 @@
 [
     {
-        "id": "cat-1",
+        "id": "serv101",
         "type": "room",
-        "name": "PREMIUM ROOMS",
+        "name": "Premium Rooms",
         "description": "Our premium rooms are designed to give a taste of comfort and luxury during your stay in Hotel Grand Park. The rooms are well furnished and designed in a modern manner that increases guest satisfaction. They are well-equipped and furnished with king size bed, world class mattresses, pillows and duvets and have all the international standard room and bathroom amenities & facilities.",
         "image": "https://i.ibb.co/zRv4pQq/premium.jpg",
         "price": 6000,
@@ -20,7 +20,7 @@
         "offer": 15
     },
     {
-        "id": "cat-2",
+        "id": "serv102",
         "type": "room",
         "name": "Deluxe Rooms",
         "description": "Designed to ensure your comfort, all deluxe rooms are lively, spacious and decorated in a modern style. They are well-equipped and furnished with king size bed, world class mattresses, pillows and duvets and have all the international standard room and bathroom amenities & facilities.",
@@ -36,7 +36,7 @@
         ]
     },
     {
-        "id": "cat-3",
+        "id": "serv103",
         "type": "room",
         "name": "Superior Twin",
         "description": "Luxury, personal touch and international standard amenities are the synonyms for our superior twin rooms. They are well furnished and equipped with two queen size beds. It is perfect for all range of guests including family, friends or business people.",
@@ -55,7 +55,7 @@
         "offer": 10
     },
     {
-        "id": "cat-4",
+        "id": "serv104",
         "type": "room",
         "name": "Family Suites",
         "description": "Family Suite is the combination of one Superior Twin and one Premium Double room linked by interconnected doors. Generally, four guests can be accommodated in connecting room, however, with two extra beds, one in each room, total of six guests can be accommodated.",
@@ -73,12 +73,27 @@
         ]
     },
     {
-        "id": "cat-5",
-        "type": "transport",
-        "name": "Family Suites",
-        "description": "Family Suite is the combination of one Superior Twin and one Premium Double room linked by interconnected doors. Generally, four guests can be accommodated in connecting room, however, with two extra beds, one in each room, total of six guests can be accommodated.",
-        "image": "https://i.ibb.co/PcFy1WD/suites.jpg",
-        "price": 4500,
+        "id": "serv105",
+        "type": "room",
+        "name": "Standard Single Room",
+        "description": "Each standard single room offers 18 sq. meters of unique space for guests to relax and feel comfortable. It also offers many other amenities. Prices starts from 1800",
+        "image": "https://i.ibb.co/NWCTrYL/single-room.jpg",
+        "price": 1800,
+        "complementary": [
+            "Health Club",
+            "Daily Newspaper",
+            "Daily Mineral Water",
+            "Local Telephone Call",
+            "Wi-Fi Internet Access"
+        ]
+    },
+    {
+        "id": "serv106",
+        "type": "room",
+        "name": "Executive Suite Room",
+        "description": "Our most luxuriously appointed suite room offers 46 sq. meters of exceptionally designed space with air-conditioning, hot and cold running water and many other amenities. Prices starts from 7500",
+        "image": "https://i.ibb.co/VNKkD43/executive-suite.jpg",
+        "price": 7500,
         "complementary": [
             "Health Club",
             "Daily Newspaper",
@@ -88,6 +103,7 @@
             "Fruits Basket on Arrival",
             "Welcome Drinks on Arrival",
             "24 Hours Room Service "
-        ]
+        ],
+        "offer": 15
     }
 ]

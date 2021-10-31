@@ -43,7 +43,7 @@ const useMyOrder = () => {
                 setMyOrder(newArr);
                 setIsLoadingMyOrder(false);
             })
-    }, [])
+    }, [user.email])
 
     return { myOrder, setMyOrder, isLoadingMyOrder };
 }

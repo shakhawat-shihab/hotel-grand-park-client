@@ -1,7 +1,6 @@
 import { Button } from "react-bootstrap";
 
 const SingleOrder = (props) => {
-    // console.log(props.data)
     const { _id, name, email, status, address, division, transaction } = props.data;
     return (
 

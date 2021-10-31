@@ -9,6 +9,7 @@ import './MyOrders.css';
 import SingleOrder from '../SingleOrder/SingleOrder';
 import { removeFromDb } from '../../dB';
 const MyOrders = () => {
+    // window.scrollTo(0, 0);
     const history = useHistory();
     const [nav, setNav] = useState({ cartOrder: true, placedOrder: false });
     const { myOrder, setMyOrder, isLoadingMyOrder } = useMyOrder();
@@ -147,7 +148,7 @@ const MyOrders = () => {
                                 </div>
                             </div>
                             :
-                            <div style={{ height: '50vh' }} className='d-flex align-items-center justify-content-center' >
+                            <div style={{ height: '55vh' }} className='d-flex align-items-center justify-content-center' >
                                 <h1 className='text-secondary'>
                                     Your cart is empty!!
                                 </h1>
@@ -177,7 +178,7 @@ const MyOrders = () => {
                                 </div>
                             </div>
                             :
-                            <div style={{ height: '50vh' }} className='d-flex align-items-center justify-content-center' >
+                            <div style={{ height: '55vh' }} className='d-flex align-items-center justify-content-center' >
                                 <h1 className='text-secondary'>
                                     You have no placed order
                                 </h1>

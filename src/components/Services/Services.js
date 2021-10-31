@@ -17,7 +17,7 @@ const Services = () => {
         return (
             <div className='py-5 mt-5'>
                 <h1 className='text-center'>Our Services</h1>
-                <Row md={2} lg={4} sm={2} xs={1} className="g-3 m-0">
+                <Row md={2} lg={3} sm={2} xs={1} className="g-3 m-0">
                     {services.map(x => <RoomCard data={x} key={x.id} ></RoomCard>)}
                 </Row>
             </div>

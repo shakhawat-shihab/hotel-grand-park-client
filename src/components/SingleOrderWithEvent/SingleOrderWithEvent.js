@@ -1,7 +1,7 @@
 import { Button } from "react-bootstrap";
 
 const SingleOrderWithEvent = (props) => {
-    console.log(props.data)
+    // console.log(props.data)
     const { _id, name, email, status, address, division, transaction } = props.data;
     return (
 

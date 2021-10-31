@@ -34,8 +34,11 @@ const useCart = () => {
                 const temp = [];
                 for (const key in savedService) {
                     const newData = data.find(x => x.id === key);
-                    newData.count = savedService[key];
-                    temp.push(newData);
+                    if (newData) {
+                        newData.count = savedService[key];
+                        temp.push(newData);
+                    }
+
                 }
                 setCart(temp);
                 setIsLoadingCart(false);

@@ -5,8 +5,7 @@ import SingleOrderWithEvent from '../SingleOrderWithEvent/SingleOrderWithEvent';
 
 const ManageOrders = () => {
     const { allOrder, setAllOrder, isLoadingAllOrder } = useAllOrder();
-    console.log(allOrder);
-
+    // console.log(allOrder);
     function handleApprove(id) {
         // console.log(id);
         alert('Are you sure to Approve?')
@@ -16,20 +15,20 @@ const ManageOrders = () => {
             }
             return x;
         });
-        console.log(newArr);
+        // console.log(newArr);
         fetch(`https://hotel-grand-park.herokuapp.com/updateOrder/${id}`, {
             method: 'put',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({ status: 'approve' })
+            body: JSON.stringify({ status: 'approved' })
         })
             .then(resp => resp.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (data.modifiedCount > 0) {
-                    alert("Successfully updated!");
                     setAllOrder(newArr);
+                    alert("Successfully updated!");
                     // history.push('/users');
                 }
             });
