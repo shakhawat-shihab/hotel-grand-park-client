@@ -22,9 +22,9 @@ const Rooms = () => {
     else {
         return (
             <div className='my-4'>
-                <h1 className='text-center'>Our Rooms</h1>
+                <h1 className='text-center pt-3'>Our Rooms</h1>
                 <Row md={2} lg={3} sm={2} xs={1} className="g-3 m-0">
-                    {rooms.map(x => <RoomCard data={x} key={x.id} ></RoomCard>)}
+                    {rooms.slice(0, 6).map(x => <RoomCard data={x} key={x.id} ></RoomCard>)}
                 </Row>
             </div>
         );
