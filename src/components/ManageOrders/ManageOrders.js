@@ -50,8 +50,6 @@ const ManageOrders = () => {
                 }
                 setAllOrder(newArr);
             })
-
-
     }
     return (
         <div className='mt-5 pt-4'>
@@ -60,12 +58,12 @@ const ManageOrders = () => {
                 isLoadingAllOrder === false
                     ?
                     <div className='row g-0 justify-content-center mb-5'>
-                        <div className='col-11 col-md-11 '>
+                        <div className='col-12 px-2 px-md-0 col-md-11 '>
                             <div className='row m-0 g-0 border-bottom border-top border-2 border-dark text-center'>
-                                <div className='col-md-10 col-9 border-end border-2 border-dark py-2'>
+                                <div className='col-md-10 col-8 border-end border-2 border-dark py-2'>
                                     <h4 className='fw-bold text-primary'>Orders</h4>
                                 </div>
-                                <div className='col-md-2 col-3 py-2'>
+                                <div className='col-md-2 col-4 py-2'>
                                     <h4 className='fw-bold text-primary'>Manage</h4>
                                 </div>
                             </div>

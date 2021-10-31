@@ -10,7 +10,7 @@ import SingleOrder from '../SingleOrder/SingleOrder';
 const MyOrders = () => {
     const history = useHistory();
     const [nav, setNav] = useState({ cartOrder: true, placedOrder: false });
-    const { myOrder, isLoadingMyOrder } = useMyOrder();
+    const { myOrder, setMyOrder, isLoadingMyOrder } = useMyOrder();
     console.log(myOrder);
     const { cart, setCart, isLoadingCart } = useCart();
     const [total, setTotal] = useState();
@@ -56,6 +56,22 @@ const MyOrders = () => {
     }
     const goToShipping = () => {
         history.push('/shipping');
+    }
+    function handleDelete(id) {
+        console.log(id);
+        // alert('Are you sure to Delete?')
+        // const newArr = myOrder.filter(x => x._id !== id);
+        // fetch(`https://hotel-grand-park.herokuapp.com/deleteOrder/${id}`, {
+        //     method: 'delete'
+        // })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         if (data.deletedCount > 0) {
+        //             const remainingUsers = myOrder.filter(x => x._id !== id);
+        //             setMyOrder(remainingUsers)
+        //         }
+        //         setMyOrder(newArr);
+        //     })
     }
     return (
         <div className='mt-5 pt-4'>
@@ -135,17 +151,17 @@ const MyOrders = () => {
                         myOrder.length
                             ?
                             <div className='row g-0 justify-content-center mb-5'>
-                                <div className='col-11 col-md-11 '>
+                                <div className='col-12 px-2 px-md-0 col-md-11 '>
                                     <div className='row m-0 g-0 border-bottom border-top border-2 border-dark text-center'>
-                                        <div className='col-md-10 col-9 border-end border-2 border-dark py-2'>
+                                        <div className='col-md-10 col-8 border-end border-2 border-dark py-2'>
                                             <h4 className='fw-bold text-primary'>Orders</h4>
                                         </div>
-                                        <div className='col-md-2 col-3 py-2'>
+                                        <div className='col-md-2 col-4 py-2'>
                                             <h4 className='fw-bold text-primary'>Status</h4>
                                         </div>
                                     </div>
                                     {
-                                        myOrder.map(x => <SingleOrder key={x._id} data={x} ></SingleOrder>)
+                                        myOrder.map(x => <SingleOrder eventHandlerDelete={handleDelete} key={x._id} data={x} ></SingleOrder>)
                                     }
                                 </div>
                             </div>

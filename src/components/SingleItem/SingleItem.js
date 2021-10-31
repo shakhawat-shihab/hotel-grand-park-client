@@ -123,7 +123,7 @@ const SingleItem = (props) => {
                 </div>
             </div>
             <div className='col-md-2 col-3  d-flex align-items-center justify-content-center text-warning '>
-                <h4 className='text-center ' id={id}>{offer ? ((price * cnt) - (price * cnt) * (offer / 100)) : price * cnt} ৳</h4>
+                <h4 className='text-center fw-bold' id={id}>{offer ? ((price * cnt) - (price * cnt) * (offer / 100)) : price * cnt} ৳</h4>
             </div>
         </div>
     );

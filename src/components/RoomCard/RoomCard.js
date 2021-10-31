@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button, Card, Col } from 'react-bootstrap';
 import { useHistory } from 'react-router';
-import { BsFillCartCheckFill, BsFillInfoCircleFill } from "react-icons/bs";
-import useCart from '../../hooks/useCart';
+import { BsFillInfoCircleFill } from "react-icons/bs";
+// import useCart from '../../hooks/useCart';
 
 const RoomCard = (props) => {
     const history = useHistory();

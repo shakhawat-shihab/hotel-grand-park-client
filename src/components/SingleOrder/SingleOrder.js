@@ -1,3 +1,4 @@
+import { Button } from "react-bootstrap";
 
 const SingleOrder = (props) => {
     console.log(props.data)
@@ -5,11 +6,11 @@ const SingleOrder = (props) => {
     return (
 
         <div className='row m-0 border-bottom border-2 border-dark g-0'>
-            <div className='col-md-10 col-9 border-end border-2 border-dark  py-4'>
+            <div className='col-md-10 col-8 border-end border-2 border-dark  py-4'>
                 <h5 className='fw-bold'> Order Id: <small  > #{_id.substr(0, 12)}...</small> </h5>
                 <h5>Name: {name}</h5>
-                <h5>Email: {email}</h5>
-                <h5>Address: <small>{address}, {division}</small> </h5>
+                <h5>Email: <span className='fs-6'>{email}</span> </h5>
+                <h5>Address: <span className='fs-6'>{address}, {division}</span> </h5>
                 <h5>Transaction Id: {transaction}</h5>
                 {
                     props.data?.items
@@ -32,10 +33,12 @@ const SingleOrder = (props) => {
                     </div>
                 }
             </div>
-            <div className='col-md-2 col-3  d-flex align-items-center justify-content-center '>
-                <h4 className='text-center text-capitalize'>
+            <div className='col-md-2 col-4  d-flex align-items-center justify-content-center '>
+                <div className='text-center text-capitalize'>
                     <span className={status === 'pending' ? 'text-warning' : 'text-success'}>{status}</span>
-                </h4>
+                    <br />
+                    <Button variant='danger' onClick={() => { props.eventHandlerDelete(_id) }}> Delete </Button>
+                </div>
             </div>
         </div>
     );
