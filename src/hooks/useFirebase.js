@@ -6,7 +6,9 @@ InitializeFirebase();
 const useFirebase = () => {
     const [user, setUser] = useState({});
     const [error, setError] = useState('');
+    const [admin, setAdmin] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
+    const [isLoadingAdmin, setIsLoadingAdmin] = useState(true);
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
     const signInUsingGoogle = () => {
@@ -72,7 +74,14 @@ const useFirebase = () => {
     useEffect(() => {
         const unsubscribed = onAuthStateChanged(auth, (user) => {
             if (user) {
-                setUser(user)
+                setUser(user);
+                fetch(`http://localhost:5000/users/${user.email}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log('email  address: ', user.email, ' isAdmin: ', data.admin)
+                        setAdmin(data.admin);
+                        setIsLoadingAdmin(false);
+                    })
             }
             else {
                 setUser({});
@@ -81,7 +90,32 @@ const useFirebase = () => {
         });
         return () => unsubscribed;
     }, [])
+    //useEffect te  user.email asar agei ekbar run hy a jasse, jar fole  
+    // http://localhost:5000/users/undefined ei link fetch korte partase na.
+    // tai user load howar por e amdr admin kina check korte hbe
+    /*useEffect(() => {
+        setIsLoadingAdmin(true);
+        fetch(`http://localhost:5000/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(user.email, data.admin)
+                setAdmin(data.admin);
+                setIsLoadingAdmin(false);
+            })
+    }, [user.email])*/
 
-    return { signInUsingGoogle, user, setUser, error, setError, logOut, isLoading, setIsLoading, createUserByEmailPassword, signInUser, updateProfileName }
+    function saveUser(email, displayName, method) {
+        const user = { email, displayName };
+        fetch('http://localhost:5000/users', {
+            method: method,
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then()
+    }
+
+    return { signInUsingGoogle, user, setUser, error, setError, logOut, isLoading, setIsLoading, createUserByEmailPassword, signInUser, updateProfileName, saveUser, admin, isLoadingAdmin }
 }
 export default useFirebase;

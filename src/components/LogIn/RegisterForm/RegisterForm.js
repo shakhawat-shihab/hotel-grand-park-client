@@ -8,7 +8,7 @@ import useAuth from '../../../hooks/useAuth';
 import { useHistory } from 'react-router';
 import swal from 'sweetalert';
 const RegisterForm = () => {
-    const { createUserByEmailPassword, setUser, updateProfileName } = useAuth();
+    const { createUserByEmailPassword, setUser, updateProfileName, saveUser } = useAuth();
     const [userValidity, setUserValidity] = useState(0);
     const [emailValidity, setEmailValidity] = useState(0);
     const [passwordValidity, setPasswordValidity] = useState(0);
@@ -32,6 +32,7 @@ const RegisterForm = () => {
                     }
                     setUser(newUser);
                     updateProfileName(name);
+                    saveUser(email, name, 'post');
                     history.push('/home');
                     swal({
                         title: "Your Account Created Successfully!",

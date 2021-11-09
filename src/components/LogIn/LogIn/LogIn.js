@@ -10,7 +10,7 @@ import useAuth from '../../../hooks/useAuth';
 
 const LogIn = () => {
     window.scrollTo(0, 0);
-    const { user, setUser, signInUsingGoogle, isLoading, setIsLoading, signInUser } = useAuth();
+    const { user, setUser, signInUsingGoogle, isLoading, setIsLoading, signInUser, saveUser } = useAuth();
     const location = useLocation();
     const history = useHistory();
     if (user.displayName || user.email) {
@@ -23,6 +23,8 @@ const LogIn = () => {
         signInUsingGoogle()
             .then(result => {
                 setUser(result.user);
+                saveUser(result.user.email, result.user.displayName, 'put');
+                // console.log(result.user.displayName)
                 history.push(redirect_uri);
                 swal({
                     title: "You are Successfully Logged In!",

@@ -15,7 +15,7 @@ import { MdOutlineManageAccounts } from "react-icons/md";
 import { BsFillCartFill } from "react-icons/bs";
 import { getDataFromDb } from '../../dB';
 const NavigationBar = () => {
-    const { user, logOut } = useAuth();
+    const { user, logOut, admin } = useAuth();
     const [pos, setPos] = useState(false);
     const [showUser, setShowUser] = useState(false);
     const [showManage, setShowManage] = useState(false);
@@ -68,27 +68,30 @@ const NavigationBar = () => {
                             (user.displayName || user.email)
                                 ?
                                 <>
-                                    <NavDropdown
-                                        title={
-                                            <div className='h-100 d-flex align-items-center  '>
-                                                Manage
-                                            </div>
-                                        }
-                                        className='m-0'
-                                        id="collasible-nav-dropdown"
-                                        show={showManage}
-                                        onMouseEnter={() => { setShowManage(true) }}
-                                        onMouseLeave={() => { setShowManage(false) }}
-                                    >
-                                        <NavDropdown.Item as={NavLink} to='/manage-orders' activeClassName="selected"  >
-                                            <MdOutlineManageAccounts />
-                                            <span className='ps-2'> Manage Orders </span>
-                                        </NavDropdown.Item>
-                                        <NavDropdown.Item as={NavLink} to='/add-service' activeClassName="selected"  >
-                                            <AiOutlineFileAdd />
-                                            <span className='ps-2'> Add Service </span>
-                                        </NavDropdown.Item>
-                                    </NavDropdown>
+                                    {
+                                        admin && <NavDropdown
+                                            title={
+                                                <div className='h-100 d-flex align-items-center  '>
+                                                    Manage
+                                                </div>
+                                            }
+                                            className='m-0'
+                                            id="collasible-nav-dropdown"
+                                            show={showManage}
+                                            onMouseEnter={() => { setShowManage(true) }}
+                                            onMouseLeave={() => { setShowManage(false) }}
+                                        >
+                                            <NavDropdown.Item as={NavLink} to='/manage-orders' activeClassName="selected"  >
+                                                <MdOutlineManageAccounts />
+                                                <span className='ps-2'> Manage Orders </span>
+                                            </NavDropdown.Item>
+                                            <NavDropdown.Item as={NavLink} to='/add-service' activeClassName="selected"  >
+                                                <AiOutlineFileAdd />
+                                                <span className='ps-2'> Add Service </span>
+                                            </NavDropdown.Item>
+                                        </NavDropdown>
+                                    }
+
                                     <Nav.Link as={NavLink} to='/my-order' activeClassName="selected"  >
                                         <div className="position-relative d-flex cursor-pointer">
                                             {

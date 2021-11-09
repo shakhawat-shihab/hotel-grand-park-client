@@ -14,6 +14,7 @@ import Services from './components/Services/Services';
 import ManageOrders from './components/ManageOrders/ManageOrders';
 import Footer from './components/Footer/Footer';
 import NotFound from './components/NotFound/NotFound';
+import AdminRoute from './components/AdminRoute/AdminRoute';
 
 function App() {
   return (
@@ -39,12 +40,12 @@ function App() {
           <PrivateRoute path='/shipping'>
             <Shipping></Shipping>
           </PrivateRoute>
-          <PrivateRoute path='/add-service'>
+          <AdminRoute path='/add-service'>
             <AddService></AddService>
-          </PrivateRoute>
-          <PrivateRoute path='/manage-orders'>
+          </AdminRoute>
+          <AdminRoute path='/manage-orders'>
             <ManageOrders></ManageOrders>
-          </PrivateRoute>
+          </AdminRoute>
           <Route path='/login'>
             <LogIn></LogIn>
           </Route>
